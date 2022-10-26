@@ -73,6 +73,7 @@ async def bouton(ctx):
 
 
 
+token=input("entrer vitre token: ")
 
-token=intput("entrer le token: ")
 bot.run(token)
+

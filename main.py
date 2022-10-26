@@ -74,9 +74,5 @@ async def bouton(ctx):
 
 
 
-
-bot.run('MTAzMjM0ODc4NDE1NzU0MDM5Mg.GMBE-v.ftkALs-vOa7hRWsJmXV_CQMYriufH-bwGKsIXc')
-
-#MTAzMjM1NzIwNDM5NDc3MDQ3NA.GIQsl9.S7sIrv1c_s1N3kMPwjCj4YaDDkxExN5xh-FUww   mon serveur
-
-#MTAzMjM0ODc4NDE1NzU0MDM5Mg.GMBE-v.ftkALs-vOa7hRWsJmXV_CQMYriufH-bwGKsIXc
+token=intput("entrer le token: ")
+bot.run(token)

@@ -138,8 +138,6 @@ def search(url):
                 break
         value = res[indices].text.replace('<script z-js-react-on-rails-store="MainStore" type="application/json">', "")
         z = json.loads(value)
-        with open('data.json', 'w') as mon_fichier:
-            json.dump(z, mon_fichier)
 
         return z
     except:

